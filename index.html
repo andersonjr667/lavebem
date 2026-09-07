@@ -34,12 +34,21 @@
     <meta name="twitter:image:alt" content="Logo da LavaBem, conserto de máquinas de lavar em Belo Horizonte e região" />
     <meta name="theme-color" content="#0d3b5c" />
     <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <link rel="preload" as="image" href="assets/lavabem-logo-completa-profissional.webp" type="image/webp" fetchpriority="high" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
+      rel="preload"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
     />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
     <link rel="stylesheet" href="styles.css?v=48c3392b" />
 
     <script type="application/ld+json">
@@ -82,7 +91,7 @@
     <header class="site-header">
       <div class="container header-inner">
         <a class="brand" href="#top" aria-label="LavaBem - início">
-          <img class="brand-logo" src="assets/lavabem-logo-somente-texto.png" alt="LavaBem" />
+          <img class="brand-logo" src="assets/lavabem-logo-somente-texto.webp" alt="LavaBem" width="340" height="146" />
         </a>
 
         <nav class="main-nav" aria-label="Navegação principal">
@@ -146,10 +155,10 @@
 
           <div class="hero-media">
             <img
-              src="assets/lavabem-logo-completa-profissional.png"
+              src="assets/lavabem-logo-completa-profissional.webp"
               alt="Identidade visual da LavaBem"
-              width="800"
-              height="760"
+              width="1200"
+              height="802"
               loading="eager"
               fetchpriority="high"
             />
@@ -525,7 +534,7 @@
       <div class="container footer-grid">
         <div class="footer-intro">
           <a class="brand footer-brand" href="#top" aria-label="LavaBem - início">
-            <img class="brand-logo" src="assets/lavabem-logo-somente-texto.png" alt="LavaBem" />
+            <img class="brand-logo" src="assets/lavabem-logo-somente-texto.webp" alt="LavaBem" width="340" height="146" />
           </a>
           <p>Conserto de máquinas de lavar em domicílio para Belo Horizonte e região metropolitana.</p>
           <a class="footer-callout" href="#contato-form">Descreva o defeito e receba orientação <span aria-hidden="true">→</span></a>
