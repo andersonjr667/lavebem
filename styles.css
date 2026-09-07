@@ -1082,6 +1082,14 @@ main > section:not(.hero),
   letter-spacing: -0.05em;
 }
 
+.final-copy {
+  max-width: 600px;
+}
+
+.final-copy .eyebrow {
+  margin-bottom: 14px;
+}
+
 .final-inner p {
   margin: 0;
   color: rgba(255, 255, 255, 0.82);
@@ -1092,6 +1100,10 @@ main > section:not(.hero),
   flex-wrap: wrap;
   gap: 14px;
   justify-content: flex-end;
+}
+
+.final-actions .btn {
+  min-height: 54px;
 }
 
 .final-meta {
@@ -1434,7 +1446,8 @@ main > section:not(.hero),
   .process-grid,
   .contact-form-grid,
   .final-inner,
-  .footer-grid {
+  .machine-showcase,
+  .machine-grid {
     grid-template-columns: 1fr;
   }
 
@@ -1561,6 +1574,10 @@ main > section:not(.hero),
     min-height: 250px;
   }
 
+  .machine-card img {
+    height: 220px;
+  }
+
   .media-block-heading {
     display: block;
   }
@@ -1593,11 +1610,40 @@ main > section:not(.hero),
   }
 
   .final-cta {
-    padding: 48px 0;
+    padding: 44px 0 56px;
+  }
+
+  .final-inner {
+    gap: 26px;
+  }
+
+  .final-copy {
+    max-width: none;
+  }
+
+  .final-inner h2 {
+    font-size: clamp(2rem, 9vw, 2.6rem);
+    line-height: 1.05;
+  }
+
+  .final-copy > p:last-child {
+    max-width: 34rem;
+    margin-top: 14px;
+    font-size: 0.98rem;
   }
 
   .final-actions {
     gap: 10px;
+  }
+
+  .final-actions .btn {
+    min-height: 52px;
+  }
+
+  .final-meta {
+    display: grid;
+    gap: 10px;
+    font-size: 0.88rem;
   }
 
   .footer-grid {

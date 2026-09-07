@@ -4,7 +4,7 @@
   "private": true,
   "description": "Site institucional da LavaBem",
   "scripts": {
-    "build": "rm -rf dist && mkdir -p dist && cp -R assets dist/assets && html-minifier-terser --input-dir . --output-dir dist --file-ext html --collapse-whitespace --remove-comments --minify-css true --minify-js true && cleancss -o dist/styles.css styles.css && terser script.js --compress --mangle --output dist/script.js",
+    "build": "rm -rf dist && mkdir -p dist && cp -R assets dist/assets && html-minifier-terser --input-dir . --output-dir dist --file-ext html --collapse-whitespace --remove-comments --minify-css true --minify-js true && cleancss -o dist/styles.css styles.css && terser script.js --compress --mangle --output dist/script.js && node cache-bust.mjs",
     "optimize": "npm run build"
   },
   "devDependencies": {
