@@ -2,6 +2,18 @@ const config = {
   siteName: "LavaBem"
 };
 
+const whatsappMessages = {
+  header: "Oi, vim pelo site da LavaBem e queria entender melhor como funciona o atendimento para minha máquina.",
+  hero: "Oi, encontrei a LavaBem pelo site. Minha máquina parou e gostaria de conversar com um técnico sobre o que pode estar acontecendo.",
+  problems: "Oi, vi os problemas atendidos no site e quero enviar os detalhes do defeito da minha máquina para receber uma orientação.",
+  process: "Oi, gostaria de marcar uma avaliação da minha máquina. Podem me dizer quais horários estão disponíveis para minha região?",
+  coverage: "Oi, gostaria de confirmar se a LavaBem atende meu bairro e explicar o problema da minha máquina.",
+  final: "Oi, estou no site da LavaBem e preciso de ajuda para decidir o próximo passo com minha máquina de lavar.",
+  footer: "Oi, passei pelo rodapé do site e gostaria de conversar sobre o conserto da minha máquina.",
+  mobile_bar: "Oi, estou pelo celular e preciso de ajuda com minha máquina de lavar. Podem me orientar?",
+  floating_button: "Olá, quero entender melhor o serviço da LavaBem. Podem me explicar como funciona o atendimento?"
+};
+
 const trackingState = {
   pageUrl: window.location.href,
   deviceType: window.innerWidth <= 768 ? "mobile" : "desktop"
@@ -50,6 +62,11 @@ function getTrackedParams() {
 
 function attachTrackingToLink(link) {
   const url = new URL(link.href, window.location.origin);
+  const location = link.dataset.ctaLocation;
+  const whatsappMessage = whatsappMessages[location];
+  if (url.hostname === "wa.me" && whatsappMessage) {
+    url.searchParams.set("text", whatsappMessage);
+  }
   const tracked = getTrackedParams();
   Object.entries(tracked).forEach(([key, value]) => {
     url.searchParams.set(key, value);
@@ -83,6 +100,26 @@ function trackLinkClick(event) {
   logEvent(eventName, {
     cta_location: location,
     page_url: window.location.href
+  });
+}
+
+function bindWhatsAppForm() {
+  const form = document.querySelector("[data-whatsapp-form]");
+  if (!form) return;
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const data = new FormData(form);
+    const name = data.get("name").trim();
+    const location = data.get("location").trim();
+    const machine = data.get("machine").trim();
+    const problem = data.get("problem").trim();
+    const message = `Oi, sou ${name}. Encontrei a LavaBem pelo site e queria uma orientação para minha máquina. Estou em ${location}, ela é uma ${machine} e está assim: ${problem}. Como podemos seguir?`;
+    const whatsappUrl = `https://wa.me/5531992450936?text=${encodeURIComponent(message)}`;
+
+    logEvent("whatsapp_form_submit", { cta_location: "footer_form" });
+    window.open(whatsappUrl, "_blank", "noopener");
+    form.querySelector("[data-form-status]").textContent = "Abrimos o WhatsApp com sua mensagem pronta.";
   });
 }
 
@@ -143,6 +180,7 @@ function bindRevealAnimations() {
 function init() {
   preserveNavigationParams();
   bindLeadEvents();
+  bindWhatsAppForm();
   bindRevealAnimations();
   document.querySelectorAll("a[href]").forEach((link) => {
     if (link.href.includes("wa.me") || link.href.includes("tel:")) {
