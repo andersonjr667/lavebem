@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.lavebem.com/sitemap.xml
+Sitemap: https://lavebem.com/sitemap.xml

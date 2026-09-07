@@ -64,13 +64,20 @@ function attachTrackingToLink(link) {
   const url = new URL(link.href, window.location.origin);
   const location = link.dataset.ctaLocation;
   const whatsappMessage = whatsappMessages[location];
-  if (url.hostname === "wa.me" && whatsappMessage) {
-    url.searchParams.set("text", whatsappMessage);
+  if (url.protocol === "http:" || url.protocol === "https:") {
+    if (url.hostname === "wa.me" && whatsappMessage) {
+      url.searchParams.set("text", whatsappMessage);
+    }
+    const tracked = getTrackedParams();
+    Object.entries(tracked).forEach(([key, value]) => {
+      if (url.protocol !== "tel:") {
+        url.searchParams.set(key, value);
+      }
+    });
   }
-  const tracked = getTrackedParams();
-  Object.entries(tracked).forEach(([key, value]) => {
-    url.searchParams.set(key, value);
-  });
+  if (url.protocol === "tel:") {
+    return;
+  }
   link.href = url.toString();
 }
 
@@ -110,16 +117,32 @@ function bindWhatsAppForm() {
   form.addEventListener("submit", (event) => {
     event.preventDefault();
     const data = new FormData(form);
-    const name = data.get("name").trim();
-    const location = data.get("location").trim();
-    const machine = data.get("machine").trim();
-    const problem = data.get("problem").trim();
+    const name = String(data.get("name") || "").trim();
+    const location = String(data.get("location") || "").trim();
+    const machine = String(data.get("machine") || "").trim();
+    const problem = String(data.get("problem") || "").trim();
+    const status = form.querySelector("[data-form-status]");
+
+    if (!name || !location || !machine || !problem) {
+      status.textContent = "Preencha nome, cidade, marca/modelo e o problema para continuar.";
+      status.setAttribute("data-error", "true");
+      return;
+    }
+
     const message = `Oi, sou ${name}. Encontrei a LavaBem pelo site e queria uma orientação para minha máquina. Estou em ${location}, ela é uma ${machine} e está assim: ${problem}. Como podemos seguir?`;
     const whatsappUrl = `https://wa.me/5531992450936?text=${encodeURIComponent(message)}`;
 
     logEvent("whatsapp_form_submit", { cta_location: "footer_form" });
-    window.open(whatsappUrl, "_blank", "noopener");
-    form.querySelector("[data-form-status]").textContent = "Abrimos o WhatsApp com sua mensagem pronta.";
+    const popup = window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+    if (!popup) {
+      status.textContent = "O navegador bloqueou a janela do WhatsApp. Use o botão de WhatsApp ou ligue para (31) 99245-0936.";
+      status.setAttribute("data-error", "true");
+      return;
+    }
+
+    status.textContent = "Abrimos o WhatsApp com sua mensagem pronta.";
+    status.removeAttribute("data-error");
+    form.reset();
   });
 }
 
