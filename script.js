@@ -145,7 +145,7 @@ function init() {
   bindLeadEvents();
   bindRevealAnimations();
   document.querySelectorAll("a[href]").forEach((link) => {
-    if (link.href.includes("w.app") || link.href.includes("tel:")) {
+    if (link.href.includes("wa.me") || link.href.includes("tel:")) {
       attachTrackingToLink(link);
     }
   });
