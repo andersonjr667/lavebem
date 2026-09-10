@@ -108,6 +108,10 @@ function trackLinkClick(event) {
     cta_location: location,
     page_url: window.location.href
   });
+
+  if (eventName === "whatsapp_click" || eventName === "phone_click") {
+    window.reportGoogleAdsConversion?.();
+  }
 }
 
 function bindWhatsAppForm() {
@@ -134,6 +138,7 @@ function bindWhatsAppForm() {
 
     logEvent("whatsapp_form_submit", { cta_location: "footer_form" });
     const popup = window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+    window.reportGoogleAdsConversion?.();
     if (!popup) {
       status.textContent = "O navegador bloqueou a janela do WhatsApp. Use o botão de WhatsApp ou ligue para (31) 99245-0936.";
       status.setAttribute("data-error", "true");

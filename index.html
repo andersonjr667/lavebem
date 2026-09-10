@@ -10,6 +10,31 @@
       gtag('js', new Date());
 
       gtag('config', 'AW-18399690375');
+
+      window.LAVABEM_GOOGLE_ADS_CONVERSION = 'AW-18399690375/IFt4CLr0zvIcEIf908VE';
+
+      window.reportGoogleAdsConversion = function (callback) {
+        var sendTo = window.LAVABEM_GOOGLE_ADS_CONVERSION;
+        var isConfigured = sendTo && sendTo.indexOf('COLE_O_LABEL_AQUI') === -1;
+
+        if (!isConfigured || typeof window.gtag !== 'function') {
+          if (typeof callback === 'function') callback();
+          return;
+        }
+
+        var callbackCalled = false;
+        var complete = function () {
+          if (callbackCalled) return;
+          callbackCalled = true;
+          if (typeof callback === 'function') callback();
+        };
+
+        window.gtag('event', 'conversion', {
+          send_to: sendTo,
+          event_callback: complete
+        });
+        window.setTimeout(complete, 800);
+      };
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Conserto de máquina de lavar em Belo Horizonte | LavaBem</title>
