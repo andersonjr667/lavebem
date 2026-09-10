@@ -1,6 +1,9 @@
 # LiteSpeed-friendly cache and canonical redirects
 RewriteEngine On
 
+# Use the custom page for missing routes.
+ErrorDocument 404 /404.html
+
 # Redirect non-canonical domain to canonical host
 RewriteCond %{HTTP_HOST} ^www\.lavebem\.com$ [NC]
 RewriteRule ^(.*)$ https://lavebem.com/$1 [R=301,L]

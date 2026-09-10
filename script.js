@@ -60,6 +60,36 @@ function getTrackedParams() {
   return extras;
 }
 
+function updateGoogleConsent(choice) {
+  if (typeof window.gtag !== "function") return;
+
+  const granted = choice === "accepted";
+  window.gtag("consent", "update", {
+    ad_storage: granted ? "granted" : "denied",
+    ad_user_data: granted ? "granted" : "denied",
+    ad_personalization: granted ? "granted" : "denied",
+    analytics_storage: granted ? "granted" : "denied"
+  });
+}
+
+function bindPrivacyConsent() {
+  const banner = document.querySelector("[data-privacy-consent]");
+  if (!banner) return;
+
+  const storedChoice = localStorage.getItem("lavabem_privacy_consent");
+  if (!storedChoice) banner.hidden = false;
+  if (storedChoice) updateGoogleConsent(storedChoice);
+
+  banner.querySelectorAll("[data-consent]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const choice = button.dataset.consent === "accept" ? "accepted" : "rejected";
+      localStorage.setItem("lavabem_privacy_consent", choice);
+      updateGoogleConsent(choice);
+      banner.hidden = true;
+    });
+  });
+}
+
 function attachTrackingToLink(link) {
   const url = new URL(link.href, window.location.origin);
   const location = link.dataset.ctaLocation;
@@ -207,6 +237,7 @@ function bindRevealAnimations() {
 
 function init() {
   preserveNavigationParams();
+  bindPrivacyConsent();
   bindLeadEvents();
   bindWhatsAppForm();
   bindRevealAnimations();

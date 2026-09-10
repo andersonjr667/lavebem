@@ -9,6 +9,14 @@
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
+      gtag('consent', 'default', {
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+        analytics_storage: 'denied',
+        wait_for_update: 500
+      });
+
       gtag('config', 'AW-18399690375');
 
       window.LAVABEM_GOOGLE_ADS_CONVERSION = 'AW-18399690375/IFt4CLr0zvIcEIf908VE';
@@ -68,9 +76,6 @@
     <meta name="twitter:image:alt" content="LavaBem: conserto de máquina de lavar em Belo Horizonte e região" />
     <meta name="theme-color" content="#0d3b5c" />
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-    <link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32" />
-    <link rel="icon" href="assets/favicon-180.png" type="image/png" sizes="180x180" />
-    <link rel="apple-touch-icon" href="assets/favicon-180.png" />
     <link rel="preload" as="image" href="assets/lavabem-logo-completa-profissional-800.webp" type="image/webp" fetchpriority="high" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -186,7 +191,7 @@
             </div>
 
             <p class="helper-text">
-              Envie a marca, a cidade e o defeito. Responderemos com o próximo passo.
+              Basta enviar a marca, a cidade e o que a máquina está fazendo — respondemos com o próximo passo.
             </p>
           </div>
 
@@ -226,7 +231,7 @@
 
             <article class="info-card">
               <div class="icon-wrap" aria-hidden="true">
-                <svg viewBox="0 0 24 24"><path d="M4 6.5A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5v11a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 4 17.5Zm3 2.5h10v2H7Zm0 4h7v2H7Z"/></svg>
+                <svg viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M4 6.5A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5v11a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 4 17.5Zm3 2.5h10v2H7Zm0 4h7v2H7Z"/></svg>
               </div>
               <h3>Diagnóstico explicado</h3>
               <p>Você recebe a explicação do defeito em linguagem simples antes do reparo.</p>
@@ -300,13 +305,13 @@
           <div class="section-header narrow">
             <p class="eyebrow">Na prática</p>
             <h2 id="media-title">Máquinas e cuidados que fazem parte do nosso dia</h2>
-            <p>Veja alguns equipamentos e momentos de manutenção para entender melhor o tipo de atendimento.</p>
+            <p>Um retrato rápido do nosso trabalho: os modelos que mais aparecem e alguns momentos de manutenção no dia a dia.</p>
           </div>
 
           <div class="media-block">
             <div class="media-block-heading">
               <h3>Exemplos de máquinas</h3>
-              <span>Modelos e formatos diferentes</span>
+              <span>Frontais, compactas, com abertura superior — de tudo um pouco</span>
             </div>
             <div class="machine-showcase" aria-label="Exemplos de máquinas de lavar atendidas">
               <figure class="machine-card machine-card-featured">
@@ -347,21 +352,21 @@
             <article class="brand-card">
               <img class="brand-image" src="assets/marcas/electrolux.webp" srcset="assets/marcas/electrolux.webp 900w" sizes="(max-width: 768px) 100vw, 900px" alt="Logo Electrolux" width="900" height="900" loading="lazy" decoding="async" />
               <strong class="brand-name">Electrolux</strong>
-              <p>Atendimento para modelos selecionados. Confirme marca, modelo e defeito antes do agendamento.</p>
+              <p>Boa parte da linha residencial passa pelas nossas mãos. Nos diga o modelo e o que está acontecendo para confirmarmos o atendimento.</p>
             </article>
             <article class="brand-card">
               <img class="brand-image" src="assets/marcas/consul.webp" srcset="assets/marcas/consul.webp 900w" sizes="(max-width: 768px) 100vw, 900px" alt="Logo Consul" width="900" height="900" loading="lazy" decoding="async" />
               <strong class="brand-name">Consul</strong>
-              <p>Atendimento para modelos selecionados. Confirme marca, modelo e defeito antes do agendamento.</p>
+              <p>Também fazem parte do nosso dia a dia. Envie a marca e o modelo pelo WhatsApp e a gente confirma se atendemos o seu.</p>
             </article>
             <article class="brand-card">
               <img class="brand-image" src="assets/marcas/brastemp.webp" srcset="assets/marcas/brastemp.webp 400w" sizes="(max-width: 768px) 100vw, 400px" alt="Logo Brastemp" width="400" height="400" loading="lazy" decoding="async" />
               <strong class="brand-name">Brastemp</strong>
-              <p>Atendimento para modelos selecionados. Confirme marca, modelo e defeito antes do agendamento.</p>
+              <p>Diversos modelos já passaram por aqui. Diga qual é o seu e o que a máquina está fazendo para confirmarmos o serviço.</p>
             </article>
           </div>
 
-          <p class="brand-note">Não somos assistência autorizada das fabricantes, salvo se isso for comprovado e informado corretamente.</p>
+          <p class="brand-note">Não somos assistência técnica autorizada dessas marcas. Se isso mudar, atualizamos essa informação aqui.</p>
         </div>
       </section>
 
@@ -377,14 +382,14 @@
                 <span class="step-number">1</span>
                 <div>
                   <h3>Você chama no WhatsApp</h3>
-                  <p>Envia marca, cidade e defeito.</p>
+                  <p>Conte a marca, a cidade e o que a máquina está fazendo.</p>
                 </div>
               </li>
               <li>
                 <span class="step-number">2</span>
                 <div>
                   <h3>Confirmamos a disponibilidade</h3>
-                  <p>Informamos os horários possíveis para a sua região.</p>
+                  <p>Te dizemos os horários possíveis para a sua região.</p>
                 </div>
               </li>
               <li>
@@ -507,7 +512,7 @@
       <div class="container contact-form-grid">
         <div class="contact-form-copy">
           <p class="eyebrow">Fale com a LavaBem</p>
-          <h2>Algum detalhe ajuda a encontrar o próximo passo.</h2>
+          <h2>Cada detalhe ajuda a encontrar o próximo passo mais rápido.</h2>
           <p>Preencha o que já sabe sobre a máquina. A mensagem será organizada e aberta no WhatsApp para você revisar antes de enviar.</p>
           <ul>
             <li>Atendimento em domicílio</li>
@@ -542,6 +547,11 @@
             <div class="form-field form-field-wide">
               <label for="footer-problem">O que a máquina está fazendo?</label>
               <textarea id="footer-problem" name="problem" rows="3" placeholder="Conte quando o problema acontece e se apareceu algum código." required></textarea>
+            </div>
+
+            <div class="form-consent form-field-wide">
+              <input id="footer-consent" name="consent" type="checkbox" required />
+              <label for="footer-consent">Li a <a href="privacy.html">Política de Privacidade</a> e autorizo o uso dos dados para responder ao meu pedido de atendimento.</label>
             </div>
 
             <button class="btn btn-primary form-submit" type="submit">Continuar pelo WhatsApp <span aria-hidden="true">↗</span></button>
@@ -624,6 +634,17 @@
       <a class="mobile-cta whatsapp" href="https://wa.me/5531992450936" target="_blank" rel="noopener" data-event="whatsapp_click" data-cta-location="mobile_bar">WhatsApp</a>
       <a class="mobile-cta phone" href="tel:+5531992450936" data-event="phone_click" data-cta-location="mobile_bar">Ligar</a>
     </div>
+
+    <aside class="privacy-consent" data-privacy-consent hidden aria-label="Preferências de privacidade">
+      <div>
+        <strong>Privacidade e cookies</strong>
+        <p>Usamos cookies e tecnologias semelhantes para medir campanhas e melhorar o site. Você pode aceitar ou recusar essa medição. <a href="privacy.html">Saiba mais</a></p>
+      </div>
+      <div class="privacy-consent-actions">
+        <button class="btn btn-secondary btn-small" type="button" data-consent="reject">Recusar</button>
+        <button class="btn btn-primary btn-small" type="button" data-consent="accept">Aceitar</button>
+      </div>
+    </aside>
 
     <script src="script.js?v=20260906" defer></script>
   </body>
